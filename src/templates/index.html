@@ -1,0 +1,27 @@
+{% extends "base_template.html" %} {% block title %}{% endblock %} {% block
+content %}
+<ul>
+  {% for event in events %}
+  <li>{{ event.title }}</li>
+  <h1>{{ event.slug }}</h1>
+  <p>{{ event.description }}</p>
+  <p>Fecha: {{ event.date }}</p>
+  <p>time: 14:00</p>
+  <p>location: {{ event.location }}<p>
+    <p>Category: {{ event.category }}</p>
+    <p>cantidad maxima de personas: {{ event.max_attendees}}</p>
+    <ul>
+      <h2>Register the users for the event<h2>
+        {% for attende in event.attendess %}
+        <li>
+            <p>Name: {{ attende.name }}</p>
+            <p>Email: {{ attende.email }} <p>
+        </li>
+        {% endfor %}
+    </ul>
+
+
+
+  {% endfor %}
+</ul>
+{% endblock %}
