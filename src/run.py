@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-
+from forms import Ad_Event
 # Integrantes
 # Juan Esteban Bedoya Vasquez
 # Jhotin Posada Cano
@@ -41,5 +41,6 @@ def event_detail(slug):
     return "Event Not Found", 404
 
 
-# @app.route("admin/event")
-# def admin():
+@app.route("admin/event")
+def admin():
+
