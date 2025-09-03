@@ -10,12 +10,14 @@ content %}
   <p>location: {{ event.location }}<p>
     <p>Category: {{ event.category }}</p>
     <p>cantidad maxima de personas: {{ event.max_attendees}}</p>
+    <button> <a href="/event/{{event.id}}/register">Register as attendee</a></button>
     <ul>
       <h2>Register the users for the event<h2>
         {% for attende in event.attendess %}
         <li>
             <p>Name: {{ attende.name }}</p>
             <p>Email: {{ attende.email }} <p>
+
         </li>
         {% endfor %}
     </ul>

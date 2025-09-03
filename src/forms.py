@@ -23,3 +23,8 @@ class Ad_Event(FlaskForm):
     max_attendess = IntegerField(
         "Maxium number of attendees", validators=[DataRequired()]
     )
+
+
+class RegisterAttendee(FlaskForm):
+    name = StringField("Name", validators=[DataRequired(), Length(max=40)])
+    email = StringField("Email", validators=[DataRequired(), Email(), Length(max=40)])

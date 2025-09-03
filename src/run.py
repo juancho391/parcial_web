@@ -1,5 +1,6 @@
-from flask import Flask, render_template
-from .forms import Ad_Event
+from flask import Flask, render_template, redirect, url_for
+from .forms import Ad_Event, RegisterAttendee
+
 
 # Integrantes
 # Juan Esteban Bedoya Vasquez
@@ -55,3 +56,15 @@ def event_filter_by_cartegory(category: str):
         filter(lambda event: True if event["category"] == category else False, events)
     )
     return render_template("index.html", events=filtered_events)
+
+
+@app.route("/event/<int:id>/register/", methods=["GET", "POST"])
+def register_for_event(id):
+    form = RegisterAttendee()
+    if form.validate_on_submit():
+        name = form.name.data
+        email = form.email.data
+        print(name, email)
+        return redirect(url_for("index"))
+
+    return render_template("register_attende_form.html", form=form)
