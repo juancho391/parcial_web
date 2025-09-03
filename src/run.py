@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-from forms import Ad_Event
+from .forms import Ad_Event
+
 # Integrantes
 # Juan Esteban Bedoya Vasquez
 # Jhotin Posada Cano
@@ -41,6 +42,16 @@ def event_detail(slug):
     return "Event Not Found", 404
 
 
-@app.route("admin/event")
-def admin():
+# @app.route("admin/event")
+# def admin():
+#     pass
 
+
+@app.route("/event/category/<category>/")
+def event_filter_by_cartegory(category: str):
+    if category not in categories:
+        return "Category Not Found", 404
+    filtered_events = list(
+        filter(lambda event: True if event["category"] == category else False, events)
+    )
+    return render_template("index.html", events=filtered_events)
